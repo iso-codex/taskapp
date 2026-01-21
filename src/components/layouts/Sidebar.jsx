@@ -33,18 +33,18 @@ const Sidebar = ({ className }) => {
         { label: 'Tasks', icon: CheckSquare, path: '/tasks' },
         { label: 'Docs', icon: FileText, path: '/notes' },
         { label: 'Schedule', icon: Calendar, path: '/calendar' },
-        { label: 'Chat', icon: MessageSquare, path: '/chat', disabled: true },
-        { label: 'Payments', icon: CreditCard, path: '/payments', disabled: true },
+        { label: 'Chat', icon: MessageSquare, path: '/chat' },
+        { label: 'Payments', icon: CreditCard, path: '/payments' },
         { label: 'Customers', icon: Users, path: '/clients' },
-        { label: 'Automations', icon: Zap, path: '/automations', disabled: true },
-        { label: 'User Management', icon: UserCog, path: '/users', disabled: true },
-        { label: 'Workflows', icon: Workflow, path: '/workflows', disabled: true },
+        { label: 'Automations', icon: Zap, path: '/automations' },
+        { label: 'User Management', icon: UserCog, path: '/users' },
+        { label: 'Workflows', icon: Workflow, path: '/workflows' },
     ];
 
     const fileNavItems = [
-        { label: 'Store', icon: Store, path: '/store', disabled: true },
-        { label: 'Company', icon: Briefcase, path: '/company', disabled: true },
-        { label: 'Employee', icon: UserCog, path: '/employee', disabled: true },
+        { label: 'Store', icon: Store, path: '/store' },
+        { label: 'Company', icon: Briefcase, path: '/company' },
+        { label: 'Employee', icon: UserCog, path: '/employee' },
     ];
 
     return (
