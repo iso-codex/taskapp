@@ -90,11 +90,11 @@ const Notes = () => {
     }, [editTitle, editContent])
 
     return (
-        <div className="flex h-[calc(100vh-8rem)] max-w-7xl mx-auto bg-white rounded-xl shadow-sm border border-border overflow-hidden">
+        <div className="flex h-[calc(100vh-8rem)] max-w-7xl mx-auto bg-card rounded-xl shadow-sm border border-border overflow-hidden">
             {/* Left Sidebar - Notes List */}
-            <div className="w-80 border-r border-border flex flex-col bg-gray-50">
+            <div className="w-80 border-r border-border flex flex-col bg-secondary/30">
                 {/* Header */}
-                <div className="p-4 border-b border-border bg-white">
+                <div className="p-4 border-b border-border bg-card">
                     <div className="flex items-center justify-between mb-3">
                         <h2 className="text-lg font-semibold">All Ideas</h2>
                         <div className="flex gap-1">
@@ -118,7 +118,7 @@ const Notes = () => {
                             placeholder="Search notes..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-9 pr-4 py-2 bg-white border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+                            className="w-full pl-9 pr-4 py-2 bg-card border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
                         />
                     </div>
                 </div>
@@ -138,8 +138,8 @@ const Notes = () => {
                                 key={note.id}
                                 onClick={() => setSelectedNote(note)}
                                 className={cn(
-                                    "group p-4 border-b border-border cursor-pointer transition-colors hover:bg-white relative",
-                                    selectedNote?.id === note.id ? "bg-white border-l-4 border-l-primary" : "border-l-4 border-l-transparent"
+                                    "group p-4 border-b border-border cursor-pointer transition-colors hover:bg-card relative",
+                                    selectedNote?.id === note.id ? "bg-card border-l-4 border-l-primary" : "border-l-4 border-l-transparent"
                                 )}
                             >
                                 <div className="flex items-start justify-between mb-1">
@@ -170,7 +170,7 @@ const Notes = () => {
                 </div>
 
                 {/* Add New Note Button */}
-                <div className="p-4 border-t border-border bg-white">
+                <div className="p-4 border-t border-border bg-card">
                     <Button
                         variant="ghost"
                         className="w-full justify-start text-muted-foreground hover:text-primary hover:bg-primary/5"
@@ -187,17 +187,17 @@ const Notes = () => {
                 {selectedNote ? (
                     <>
                         {/* Editor Header */}
-                        <div className="p-6 border-b border-border bg-white">
+                        <div className="p-6 border-b border-border bg-card">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="flex items-center gap-2">
                                     <div className={cn(
                                         "px-3 py-1 rounded-full text-xs font-medium",
-                                        selectedNote.color === 'yellow' && "bg-yellow-100 text-yellow-700",
-                                        selectedNote.color === 'blue' && "bg-blue-100 text-blue-700",
-                                        selectedNote.color === 'green' && "bg-green-100 text-green-700",
-                                        selectedNote.color === 'pink' && "bg-pink-100 text-pink-700",
-                                        selectedNote.color === 'purple' && "bg-purple-100 text-purple-700",
-                                        selectedNote.color === 'orange' && "bg-orange-100 text-orange-700"
+                                        selectedNote.color === 'yellow' && "bg-yellow-100 dark:bg-yellow-500/10 text-yellow-700 dark:text-yellow-400",
+                                        selectedNote.color === 'blue' && "bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400",
+                                        selectedNote.color === 'green' && "bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400",
+                                        selectedNote.color === 'pink' && "bg-pink-100 dark:bg-pink-500/10 text-pink-700 dark:text-pink-400",
+                                        selectedNote.color === 'purple' && "bg-purple-100 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400",
+                                        selectedNote.color === 'orange' && "bg-orange-100 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400"
                                     )}>
                                         {selectedNote.color}
                                     </div>
@@ -253,7 +253,7 @@ const Notes = () => {
                         </div>
 
                         {/* Editor Content */}
-                        <div className="flex-1 overflow-y-auto p-6 bg-gray-50/30">
+                        <div className="flex-1 overflow-y-auto p-6 bg-secondary/10">
                             <textarea
                                 value={editContent}
                                 onChange={(e) => setEditContent(e.target.value)}
@@ -263,7 +263,7 @@ const Notes = () => {
                         </div>
                     </>
                 ) : (
-                    <div className="flex-1 flex items-center justify-center bg-gray-50/30">
+                    <div className="flex-1 flex items-center justify-center bg-secondary/10">
                         <div className="text-center">
                             <FileText className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-20" />
                             <h3 className="text-lg font-semibold text-muted-foreground mb-2">No note selected</h3>
@@ -282,7 +282,7 @@ const Notes = () => {
             {/* Delete Confirmation Modal */}
             {showDeleteConfirm && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-                    <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+                    <div className="bg-card rounded-xl shadow-xl max-w-md w-full p-6">
                         <h3 className="text-lg font-semibold mb-2">Delete Note?</h3>
                         <p className="text-sm text-muted-foreground mb-6">
                             Are you sure you want to delete "{noteToDelete?.title}"? This action cannot be undone.

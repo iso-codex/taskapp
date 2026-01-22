@@ -10,15 +10,15 @@ const UserManagement = () => {
                     <h1 className="text-2xl font-bold">User Management</h1>
                     <p className="text-muted-foreground mt-1">Manage team access and roles</p>
                 </div>
-                <Button className="bg-black text-white">
+                <Button className="bg-primary text-primary-foreground">
                     <UserPlus className="w-4 h-4 mr-2" />
                     Invite User
                 </Button>
             </div>
 
-            <div className="bg-white rounded-xl border border-border overflow-hidden">
+            <div className="bg-card rounded-xl border border-border overflow-hidden">
                 <table className="w-full">
-                    <thead className="bg-gray-50/50">
+                    <thead className="bg-secondary/50">
                         <tr className="text-left text-xs text-muted-foreground font-medium uppercase">
                             <th className="px-6 py-3">User</th>
                             <th className="px-6 py-3">Role</th>
@@ -33,7 +33,7 @@ const UserManagement = () => {
                             { name: 'Olivia Rhye', email: 'olivia@example.com', role: 'Editor', status: 'Active' },
                             { name: 'Lana Steiner', email: 'lana@example.com', role: 'Viewer', status: 'Pending' },
                         ].map((user, i) => (
-                            <tr key={i} className="hover:bg-gray-50/50">
+                            <tr key={i} className="hover:bg-muted/50 transition-colors">
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
@@ -56,8 +56,8 @@ const UserManagement = () => {
                                 </td>
                                 <td className="px-6 py-4">
                                     <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${user.status === 'Active'
-                                            ? 'bg-green-50 text-green-700'
-                                            : 'bg-yellow-50 text-yellow-700'
+                                        ? 'bg-green-500/10 text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-500/20'
+                                        : 'bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 ring-1 ring-inset ring-yellow-500/20'
                                         }`}>
                                         {user.status}
                                     </span>

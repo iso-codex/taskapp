@@ -22,9 +22,9 @@ const Automations = () => {
                     { title: 'Notify on completion', desc: 'Send email when task is marked "Done"', active: true },
                     { title: 'Archive old tasks', desc: 'Archive tasks completed > 30 days ago', active: false },
                 ].map((rule, i) => (
-                    <div key={i} className="bg-white p-4 rounded-xl border border-border flex items-center justify-between hover:shadow-sm transition-shadow">
+                    <div key={i} className="bg-card p-4 rounded-xl border border-border flex items-center justify-between hover:shadow-sm transition-shadow">
                         <div className="flex items-center gap-4">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${rule.active ? 'bg-blue-50 text-blue-600' : 'bg-gray-100 text-gray-400'}`}>
+                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${rule.active ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400' : 'bg-gray-100 dark:bg-gray-800 text-gray-400'}`}>
                                 <Zap className="w-5 h-5" />
                             </div>
                             <div>
@@ -33,7 +33,7 @@ const Automations = () => {
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className={`w-10 h-5 rounded-full relative cursor-pointer ${rule.active ? 'bg-primary' : 'bg-gray-200'}`}>
+                            <div className={`w-10 h-5 rounded-full relative cursor-pointer ${rule.active ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-700'}`}>
                                 <div className={`absolute top-1 w-3 h-3 rounded-full bg-white transition-all ${rule.active ? 'left-6' : 'left-1'}`}></div>
                             </div>
                             <ArrowRight className="w-4 h-4 text-muted-foreground cursor-pointer" />

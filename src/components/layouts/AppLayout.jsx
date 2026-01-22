@@ -17,9 +17,9 @@ const AppLayout = () => {
             </div>
 
             {/* Main Content */}
-            <main className="flex-1 flex flex-col min-h-screen bg-white">
+            <main className="flex-1 flex flex-col min-h-screen bg-background">
                 {/* Top Header */}
-                <header className="h-16 bg-white border-b border-border flex items-center justify-between px-4 lg:px-8">
+                <header className="h-16 bg-background border-b border-border flex items-center justify-between px-4 lg:px-8">
                     <div className="flex items-center gap-4 flex-1">
                         {/* Mobile Menu Button */}
                         <Button
@@ -66,7 +66,7 @@ const AppLayout = () => {
                     </div>
                 )}
 
-                <div className="flex-1 p-6 overflow-auto bg-white">
+                <div className="flex-1 p-6 overflow-auto bg-background">
                     <Outlet />
                 </div>
             </main>

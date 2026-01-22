@@ -3,7 +3,7 @@ import { Search, Send, Phone, Video, MoreVertical } from 'lucide-react';
 
 const Chat = () => {
     return (
-        <div className="h-[calc(100vh-6rem)] flex bg-white border border-border rounded-xl font-sans overflow-hidden">
+        <div className="h-[calc(100vh-6rem)] flex bg-card border border-border rounded-xl font-sans overflow-hidden">
             {/* Sidebar - Contacts */}
             <div className="w-80 border-r border-border flex flex-col">
                 <div className="p-4 border-b border-border">
@@ -21,7 +21,7 @@ const Chat = () => {
                 <div className="flex-1 overflow-y-auto">
                     {[1, 2, 3, 4, 5].map((i) => (
                         <div key={i} className="p-4 hover:bg-secondary/50 cursor-pointer flex gap-3 border-b border-border/50">
-                            <div className="w-10 h-10 rounded-full bg-gray-200 flex-shrink-0" />
+                            <div className="w-10 h-10 rounded-full bg-secondary flex-shrink-0" />
                             <div className="flex-1 overflow-hidden">
                                 <div className="flex justify-between items-baseline mb-1">
                                     <span className="font-semibold text-sm">User {i}</span>
@@ -55,8 +55,8 @@ const Chat = () => {
                 </div>
 
                 {/* Messages */}
-                <div className="flex-1 p-6 overflow-y-auto bg-gray-50/30 flex flex-col gap-4">
-                    <div className="self-start max-w-[70%] bg-white border border-border p-3 rounded-2xl rounded-tl-none shadow-sm">
+                <div className="flex-1 p-6 overflow-y-auto bg-secondary/10 flex flex-col gap-4">
+                    <div className="self-start max-w-[70%] bg-card border border-border p-3 rounded-2xl rounded-tl-none shadow-sm">
                         <p className="text-sm">Hi there! How is the project going?</p>
                         <span className="text-[10px] text-muted-foreground mt-1 block">10:00 AM</span>
                     </div>
@@ -67,7 +67,7 @@ const Chat = () => {
                 </div>
 
                 {/* Input */}
-                <div className="p-4 border-t border-border bg-white">
+                <div className="p-4 border-t border-border bg-card">
                     <div className="flex items-center gap-2">
                         <input
                             type="text"

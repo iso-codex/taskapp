@@ -52,14 +52,14 @@ const Tasks = () => {
                         placeholder="Search tasks..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 bg-white border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="w-full pl-10 pr-4 py-2 bg-card border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
                     />
                 </div>
 
                 <div className="flex items-center gap-2">
                     <Filter className="w-4 h-4 text-muted-foreground" />
                     <select
-                        className="h-10 rounded-lg border border-border bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="h-10 rounded-lg border border-border bg-card px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
                     >
@@ -72,15 +72,15 @@ const Tasks = () => {
 
             {/* Task Stats */}
             <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white rounded-lg border border-border p-4">
+                <div className="bg-card rounded-lg border border-border p-4">
                     <p className="text-sm text-muted-foreground">Pending</p>
                     <p className="text-2xl font-bold mt-1">{tasksByStatus.pending.length}</p>
                 </div>
-                <div className="bg-white rounded-lg border border-border p-4">
+                <div className="bg-card rounded-lg border border-border p-4">
                     <p className="text-sm text-muted-foreground">In Progress</p>
                     <p className="text-2xl font-bold mt-1">{tasksByStatus.in_progress.length}</p>
                 </div>
-                <div className="bg-white rounded-lg border border-border p-4">
+                <div className="bg-card rounded-lg border border-border p-4">
                     <p className="text-sm text-muted-foreground">Completed</p>
                     <p className="text-2xl font-bold mt-1">{tasksByStatus.completed.length}</p>
                 </div>
@@ -88,7 +88,7 @@ const Tasks = () => {
 
             {/* Task List */}
             {loading && filteredTasks.length === 0 ? (
-                <div className="text-center py-12 bg-white rounded-lg border border-border">
+                <div className="text-center py-12 bg-card rounded-lg border border-border">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
                     <p className="text-muted-foreground mt-4">Loading tasks...</p>
                 </div>
@@ -97,7 +97,7 @@ const Tasks = () => {
                     <p className="text-destructive">{error}</p>
                 </div>
             ) : filteredTasks.length === 0 ? (
-                <div className="text-center py-16 bg-white rounded-lg border-2 border-dashed border-border">
+                <div className="text-center py-16 bg-card rounded-lg border-2 border-dashed border-border">
                     <div className="w-16 h-16 rounded-full bg-secondary mx-auto flex items-center justify-center mb-4">
                         <Plus className="w-8 h-8 text-muted-foreground" />
                     </div>

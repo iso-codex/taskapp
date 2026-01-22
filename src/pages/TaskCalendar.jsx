@@ -68,7 +68,7 @@ const TaskCalendar = () => {
         'July', 'August', 'September', 'October', 'November', 'December']
 
     return (
-        <div className="flex h-[calc(100vh-8rem)] max-w-7xl mx-auto bg-white rounded-xl shadow-sm border border-border overflow-hidden">
+        <div className="flex h-[calc(100vh-8rem)] max-w-7xl mx-auto bg-card rounded-xl shadow-sm border border-border overflow-hidden">
             {/* Main Calendar Area */}
             <div className="flex-1 flex flex-col">
                 {/* Header */}
@@ -93,15 +93,15 @@ const TaskCalendar = () => {
 
                     {/* Analytics Cards */}
                     <div className="grid grid-cols-3 gap-4 mb-6">
-                        <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                        <div className="bg-orange-50 dark:bg-orange-500/10 rounded-lg p-4 border border-orange-200 dark:border-orange-500/20">
                             <div className="text-sm text-muted-foreground mb-1">Completion Rate</div>
                             <div className="text-3xl font-bold">{completionRate}%</div>
                         </div>
-                        <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                        <div className="bg-purple-50 dark:bg-purple-500/10 rounded-lg p-4 border border-purple-200 dark:border-purple-500/20">
                             <div className="text-sm text-muted-foreground mb-1">Total Tasks</div>
                             <div className="text-3xl font-bold">{totalTasks}</div>
                         </div>
-                        <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                        <div className="bg-green-50 dark:bg-green-500/10 rounded-lg p-4 border border-green-200 dark:border-green-500/20">
                             <div className="text-sm text-muted-foreground mb-1">Completed</div>
                             <div className="text-3xl font-bold">{completedTasks}</div>
                         </div>
@@ -144,7 +144,7 @@ const TaskCalendar = () => {
                                     key={index}
                                     className={cn(
                                         "min-h-[100px] border rounded-lg p-2 transition-colors",
-                                        day ? "bg-white hover:bg-gray-50 cursor-pointer" : "bg-gray-50",
+                                        day ? "bg-card hover:bg-secondary/50 cursor-pointer" : "bg-secondary/30",
                                         isToday(day) && "border-primary border-2 bg-primary/5"
                                     )}
                                 >
@@ -187,8 +187,8 @@ const TaskCalendar = () => {
             </div>
 
             {/* Right Sidebar - Task Details */}
-            <div className="w-80 border-l border-border bg-gray-50 flex flex-col">
-                <div className="p-4 border-b border-border bg-white">
+            <div className="w-80 border-l border-border bg-secondary/30 flex flex-col">
+                <div className="p-4 border-b border-border bg-card">
                     <h3 className="font-semibold mb-2">At work</h3>
                     <div className="space-y-2">
                         {upcomingTasks.slice(0, 3).map((task) => (
@@ -204,7 +204,7 @@ const TaskCalendar = () => {
 
                 {selectedTask ? (
                     <div className="flex-1 p-4 overflow-auto">
-                        <div className="bg-white rounded-lg p-4 border border-border">
+                        <div className="bg-card rounded-lg p-4 border border-border">
                             <h3 className="font-semibold mb-3">{selectedTask.title}</h3>
 
                             {selectedTask.description && (

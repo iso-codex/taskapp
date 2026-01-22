@@ -22,14 +22,14 @@ const Clients = () => {
                         <Download className="w-4 h-4 mr-2" />
                         Export
                     </Button>
-                    <Button size="sm" className="bg-black text-white hover:bg-gray-800">
+                    <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
                         <Plus className="w-4 h-4 mr-2" />
                         Add Customer
                     </Button>
                 </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-border overflow-hidden">
+            <div className="bg-card rounded-xl border border-border overflow-hidden">
                 <div className="p-4 border-b border-border flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <Button variant="ghost" size="sm" className="text-muted-foreground">
@@ -45,14 +45,14 @@ const Clients = () => {
                             <input
                                 type="text"
                                 placeholder="Filter"
-                                className="pl-8 pr-3 py-1.5 text-sm border border-border rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+                                className="pl-8 pr-3 py-1.5 text-sm border border-border rounded-lg focus:outline-none focus:ring-1 focus:ring-primary bg-background text-foreground"
                             />
                         </div>
                     </div>
                 </div>
 
                 <table className="w-full">
-                    <thead className="bg-gray-50/50">
+                    <thead className="bg-secondary/50">
                         <tr className="text-left text-xs text-muted-foreground font-medium uppercase">
                             <th className="px-6 py-3">Customer</th>
                             <th className="px-6 py-3">Industry</th>
@@ -64,7 +64,7 @@ const Clients = () => {
                     </thead>
                     <tbody className="divide-y divide-border">
                         {clients.map((client) => (
-                            <tr key={client.id} className="hover:bg-gray-50/50 transition-colors">
+                            <tr key={client.id} className="hover:bg-muted/50 transition-colors">
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
@@ -74,7 +74,7 @@ const Clients = () => {
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">
-                                    <span className="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 text-xs font-medium text-gray-700">
+                                    <span className="inline-flex items-center px-2 py-1 rounded-md bg-secondary text-xs font-medium text-foreground">
                                         {client.industry}
                                     </span>
                                 </td>
@@ -83,8 +83,8 @@ const Clients = () => {
                                 </td>
                                 <td className="px-6 py-4">
                                     <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${client.status === 'Active'
-                                            ? 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20'
-                                            : 'bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/10'
+                                        ? 'bg-green-500/10 text-green-600 ring-1 ring-inset ring-green-500/20'
+                                        : 'bg-secondary text-muted-foreground ring-1 ring-inset ring-border'
                                         }`}>
                                         {client.status}
                                     </span>

@@ -54,15 +54,15 @@ const BoardView = () => {
                     <div className="flex items-center justify-between mb-4 px-1">
                         <div className="flex items-center gap-2">
                             <div className={`w-1 h-4 rounded-full ${column.id === 'todo' ? 'bg-indigo-500' :
-                                    column.id === 'inprogress' ? 'bg-orange-500' :
-                                        column.id === 'inreview' ? 'bg-purple-500' : 'bg-green-500'
+                                column.id === 'inprogress' ? 'bg-orange-500' :
+                                    column.id === 'inreview' ? 'bg-purple-500' : 'bg-green-500'
                                 }`}></div>
                             <h2 className="font-semibold text-sm text-foreground">{column.title}</h2>
-                            <span className="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full font-medium">{column.count}</span>
+                            <span className="bg-secondary text-muted-foreground text-xs px-2 py-0.5 rounded-full font-medium">{column.count}</span>
                         </div>
                         <div className="flex items-center text-muted-foreground">
-                            <button className="p-1 hover:bg-gray-100 rounded-md"><Plus className="w-4 h-4" /></button>
-                            <button className="p-1 hover:bg-gray-100 rounded-md"><MoreHorizontal className="w-4 h-4" /></button>
+                            <button className="p-1 hover:bg-secondary rounded-md"><Plus className="w-4 h-4" /></button>
+                            <button className="p-1 hover:bg-secondary rounded-md"><MoreHorizontal className="w-4 h-4" /></button>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ const BoardView = () => {
                         {column.tasks.map((task) => (
                             <TaskCard key={task.id} task={task} />
                         ))}
-                        <button className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-dashed border-border text-muted-foreground hover:bg-gray-50 text-sm font-medium mt-1">
+                        <button className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-dashed border-border text-muted-foreground hover:bg-secondary text-sm font-medium mt-1">
                             <Plus className="w-4 h-4" />
                             Add new
                         </button>

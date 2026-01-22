@@ -4,7 +4,7 @@ import { cn } from '../../utils/cn';
 
 const TaskCard = ({ task }) => {
     return (
-        <div className="bg-white p-4 rounded-xl border border-border hover:shadow-md transition-shadow cursor-pointer group">
+        <div className="bg-card p-4 rounded-xl border border-border hover:shadow-md transition-shadow cursor-pointer group">
             {/* Header: Client & Menu */}
             <div className="flex justify-between items-start mb-2">
                 <span className="text-xs font-medium text-muted-foreground">Client: {task.client}</span>
@@ -19,7 +19,7 @@ const TaskCard = ({ task }) => {
             <div className="flex items-center justify-between mb-4">
                 <div className="flex -space-x-2">
                     {task.assignees.map((user, i) => (
-                        <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px] font-bold">
+                        <div key={i} className="w-6 h-6 rounded-full border-2 border-background bg-secondary flex items-center justify-center text-[10px] font-bold">
                             <img src={`https://ui-avatars.com/api/?name=${user}&background=random`} alt={user} className="w-full h-full rounded-full" />
                         </div>
                     ))}

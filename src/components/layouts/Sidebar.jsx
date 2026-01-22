@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import { useAuthStore } from '../../store/authStore';
+import ThemeToggle from '../common/ThemeToggle';
 
 const Sidebar = ({ className }) => {
     const { user, signOut } = useAuthStore();
@@ -48,7 +49,7 @@ const Sidebar = ({ className }) => {
     ];
 
     return (
-        <div className={cn("flex flex-col h-screen bg-[#F3F4F6] border-r border-border w-64 p-4", className)}>
+        <div className={cn("flex flex-col h-screen bg-secondary border-r border-border w-64 p-4 transition-colors duration-200", className)}>
             {/* Brand */}
             <div className="flex items-center gap-2 px-2 mb-8">
                 <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
@@ -64,7 +65,7 @@ const Sidebar = ({ className }) => {
                 <input
                     type="text"
                     placeholder="Search"
-                    className="w-full bg-white rounded-lg pl-9 pr-4 py-2 text-sm border-none focus:ring-1 focus:ring-primary shadow-sm"
+                    className="w-full bg-background rounded-lg pl-9 pr-4 py-2 text-sm border-none focus:ring-1 focus:ring-primary shadow-sm text-foreground placeholder:text-muted-foreground"
                 />
                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
                     <span className="text-muted-foreground text-xs">⌘</span>
@@ -80,8 +81,8 @@ const Sidebar = ({ className }) => {
                         className={({ isActive }) => cn(
                             "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                             isActive && !item.disabled
-                                ? "bg-white text-foreground shadow-sm font-semibold"
-                                : "text-muted-foreground hover:bg-white/50 hover:text-foreground",
+                                ? "bg-background text-foreground shadow-sm font-semibold"
+                                : "text-muted-foreground hover:bg-background/50 hover:text-foreground",
                             item.disabled && "opacity-50 cursor-not-allowed hover:bg-transparent"
                         )}
                         onClick={(e) => item.disabled && e.preventDefault()}
@@ -113,7 +114,7 @@ const Sidebar = ({ className }) => {
                                     to={item.path}
                                     className={cn(
                                         "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors pl-8",
-                                        "text-muted-foreground hover:bg-white/50 hover:text-foreground",
+                                        "text-muted-foreground hover:bg-background/50 hover:text-foreground",
                                         item.disabled && "opacity-50 cursor-not-allowed"
                                     )}
                                     onClick={(e) => item.disabled && e.preventDefault()}
@@ -129,7 +130,7 @@ const Sidebar = ({ className }) => {
                 <div className="pt-2">
                     <NavLink
                         to="/apps"
-                        className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-white/50 hover:text-foreground"
+                        className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-background/50 hover:text-foreground"
                     >
                         <Grid className="w-4 h-4" />
                         Apps
@@ -151,6 +152,7 @@ const Sidebar = ({ className }) => {
                     <div className="flex-1 overflow-hidden">
                         <p className="text-sm font-medium truncate">{user?.email}</p>
                     </div>
+                    <ThemeToggle />
                     <button onClick={signOut} className="text-muted-foreground hover:text-destructive">
                         <LogOut className="w-4 h-4" />
                     </button>
