@@ -25,9 +25,17 @@ import { useAuthStore } from '../../store/authStore';
 import ThemeToggle from '../common/ThemeToggle';
 
 const Sidebar = ({ className }) => {
-    const { user, signOut } = useAuthStore();
+    const { user, profile, signOut } = useAuthStore();
     const location = useLocation();
     const [fileExpanded, setFileExpanded] = useState(true);
+
+    const isClient = profile?.role === 'client';
+
+    const clientNavItems = [
+        { label: 'Dashboard', icon: Home, path: '/client/dashboard' },
+        { label: 'Invoices', icon: CreditCard, path: '/payments' },
+        { label: 'Chat', icon: MessageSquare, path: '/chat' },
+    ];
 
     const mainNavItems = [
         { label: 'Home', icon: Home, path: '/' },
@@ -74,7 +82,7 @@ const Sidebar = ({ className }) => {
 
             {/* Navigation */}
             <nav className="flex-1 overflow-y-auto space-y-1 custom-scrollbar">
-                {mainNavItems.map((item) => (
+                {(isClient ? clientNavItems : mainNavItems).map((item) => (
                     <NavLink
                         key={item.label}
                         to={item.disabled ? '#' : item.path}
@@ -92,54 +100,58 @@ const Sidebar = ({ className }) => {
                     </NavLink>
                 ))}
 
-                {/* File Section */}
-                <div className="pt-4 pb-2">
-                    <button
-                        onClick={() => setFileExpanded(!fileExpanded)}
-                        className="flex items-center w-full px-3 py-1 text-sm text-muted-foreground hover:text-foreground"
-                    >
-                        {fileExpanded ? <ChevronDown className="w-3 h-3 mr-2" /> : <ChevronRight className="w-3 h-3 mr-2" />}
-                        File
-                        <div className="ml-auto flex gap-1">
-                            <span className="text-xs">+</span>
-                            <span className="text-xs">:</span>
-                        </div>
-                    </button>
+                {!isClient && (
+                    <>
+                        {/* File Section */}
+                        <div className="pt-4 pb-2">
+                            <button
+                                onClick={() => setFileExpanded(!fileExpanded)}
+                                className="flex items-center w-full px-3 py-1 text-sm text-muted-foreground hover:text-foreground"
+                            >
+                                {fileExpanded ? <ChevronDown className="w-3 h-3 mr-2" /> : <ChevronRight className="w-3 h-3 mr-2" />}
+                                File
+                                <div className="ml-auto flex gap-1">
+                                    <span className="text-xs">+</span>
+                                    <span className="text-xs">:</span>
+                                </div>
+                            </button>
 
-                    {fileExpanded && (
-                        <div className="mt-1 space-y-1">
-                            {fileNavItems.map((item) => (
-                                <NavLink
-                                    key={item.label}
-                                    to={item.path}
-                                    className={cn(
-                                        "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors pl-8",
-                                        "text-muted-foreground hover:bg-background/50 hover:text-foreground",
-                                        item.disabled && "opacity-50 cursor-not-allowed"
-                                    )}
-                                    onClick={(e) => item.disabled && e.preventDefault()}
-                                >
-                                    <item.icon className="w-4 h-4" />
-                                    {item.label}
-                                </NavLink>
-                            ))}
+                            {fileExpanded && (
+                                <div className="mt-1 space-y-1">
+                                    {fileNavItems.map((item) => (
+                                        <NavLink
+                                            key={item.label}
+                                            to={item.path}
+                                            className={cn(
+                                                "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors pl-8",
+                                                "text-muted-foreground hover:bg-background/50 hover:text-foreground",
+                                                item.disabled && "opacity-50 cursor-not-allowed"
+                                            )}
+                                            onClick={(e) => item.disabled && e.preventDefault()}
+                                        >
+                                            <item.icon className="w-4 h-4" />
+                                            {item.label}
+                                        </NavLink>
+                                    ))}
+                                </div>
+                            )}
                         </div>
-                    )}
-                </div>
 
-                <div className="pt-2">
-                    <NavLink
-                        to="/apps"
-                        className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-background/50 hover:text-foreground"
-                    >
-                        <Grid className="w-4 h-4" />
-                        Apps
-                        <div className="ml-auto flex gap-1">
-                            <span className="text-xs">+</span>
-                            <span className="text-xs">:</span>
+                        <div className="pt-2">
+                            <NavLink
+                                to="/apps"
+                                className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-background/50 hover:text-foreground"
+                            >
+                                <Grid className="w-4 h-4" />
+                                Apps
+                                <div className="ml-auto flex gap-1">
+                                    <span className="text-xs">+</span>
+                                    <span className="text-xs">:</span>
+                                </div>
+                            </NavLink>
                         </div>
-                    </NavLink>
-                </div>
+                    </>
+                )}
 
             </nav>
 
@@ -150,7 +162,8 @@ const Sidebar = ({ className }) => {
                         {user?.email?.[0].toUpperCase()}
                     </div>
                     <div className="flex-1 overflow-hidden">
-                        <p className="text-sm font-medium truncate">{user?.email}</p>
+                        <p className="text-sm font-medium truncate">{profile?.full_name || user?.email}</p>
+                        <p className="text-xs text-muted-foreground capitalize">{profile?.role || 'User'}</p>
                     </div>
                     <ThemeToggle />
                     <button onClick={signOut} className="text-muted-foreground hover:text-destructive">

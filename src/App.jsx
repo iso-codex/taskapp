@@ -20,6 +20,7 @@ import Employee from './pages/Employee';
 import Apps from './pages/Apps';
 import PrivateRoute from './components/auth/PrivateRoute';
 import AppLayout from './components/layouts/AppLayout';
+import ClientDashboard from './pages/client/Dashboard';
 
 function App() {
   const initializeAuth = useAuthStore((state) => state.initialize);
@@ -38,6 +39,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route element={<AppLayout />}>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/client/dashboard" element={<ClientDashboard />} />
               <Route path="/tasks" element={<Tasks />} />
               <Route path="/calendar" element={<TaskCalendar />} />
               <Route path="/projects" element={<Projects />} />
