@@ -88,10 +88,14 @@ export const useChatStore = create((set, get) => ({
                 content
             });
 
-            if (error) throw error;
+            if (error) {
+                console.error('Supabase message send error:', error);
+                throw error;
+            }
             // Optimistic update or wait for subscription
         } catch (error) {
             console.error('Error sending message:', error);
+            alert('Failed to send message: ' + error.message);
         }
     },
 
