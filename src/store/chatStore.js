@@ -95,7 +95,7 @@ export const useChatStore = create((set, get) => ({
             // Optimistic update or wait for subscription
         } catch (error) {
             console.error('Error sending message:', error);
-            alert('Failed to send message: ' + error.message);
+            alert('Failed to send message: ' + (error.message || error.details || error));
         }
     },
 
